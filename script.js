@@ -242,23 +242,59 @@ async function loadSteamStats() {
     setText("[data-steam-presence]", `Steam: ${steam.presence.toLowerCase()}`);
 
     const gameList = document.querySelector("[data-steam-games]");
-    const gameNames = document.querySelector("[data-steam-game-names]");
     gameList.replaceChildren();
-    steam.mostPlayed.forEach((game, index) => {
-      const tile = document.createElement("span");
-      tile.className = `game-tile ${["game-cyber", "game-space", "game-fantasy"][index]}`;
-      tile.textContent = game.name.slice(0, 3).toUpperCase();
+    steam.mostPlayed.forEach((game) => {
+      const tile = document.createElement("div");
+      tile.className = "game-tile";
       tile.title = `${game.name} · ${game.hours}h`;
+      tile.setAttribute("role", "group");
+      tile.setAttribute("aria-label", tile.title);
+
+      const fallback = document.createElement("span");
+      fallback.className = "game-icon-fallback";
+      fallback.setAttribute("aria-hidden", "true");
+      fallback.textContent = game.name.trim().charAt(0).toUpperCase();
+
+      if (game.iconUrl) {
+        const image = document.createElement("img");
+        image.src = game.iconUrl;
+        image.alt = "";
+        image.loading = "lazy";
+        image.decoding = "async";
+        image.addEventListener("error", () => image.replaceWith(fallback), { once: true });
+        tile.append(image);
+      } else {
+        tile.append(fallback);
+      }
+
+      const details = document.createElement("span");
+      details.className = "game-details";
+      const name = document.createElement("span");
+      name.className = "game-title";
+      name.textContent = game.name;
+      const hours = document.createElement("small");
+      hours.className = "game-hours";
+      hours.textContent = `${game.hours}h jogadas`;
+      details.append(name, hours);
+      tile.append(details);
       gameList.append(tile);
     });
-    gameNames.textContent = steam.mostPlayed.length
-      ? steam.mostPlayed.map((game) => `${game.name} (${game.hours}h)`).join(" · ")
-      : "Nenhum jogo público retornado pela Steam.";
+    if (!steam.mostPlayed.length) {
+      const empty = document.createElement("span");
+      empty.className = "game-empty";
+      empty.textContent = "Nenhum jogo público foi retornado pela Steam.";
+      gameList.append(empty);
+    }
     message.textContent = steam.gamesVisible
       ? `Steam atualizada · ${steam.gameCount} jogos · ${steam.totalHours}h totais.`
       : "Perfil Steam conectado, mas a biblioteca está privada.";
   } catch (error) {
     console.error("Steam stats error:", error);
+    const gameList = document.querySelector("[data-steam-games]");
+    const empty = document.createElement("span");
+    empty.className = "game-empty";
+    empty.textContent = "Jogos indisponíveis no momento.";
+    gameList.replaceChildren(empty);
     message.textContent = "Estatísticas Steam indisponíveis no momento; veja o perfil público.";
     setText("[data-steam-presence]", "presença Steam indisponível");
   }
