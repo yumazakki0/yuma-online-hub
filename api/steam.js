@@ -1,13 +1,23 @@
 const siteConfig = require("../site-config.json");
 const { isMethod, sendJson } = require("./_lib/http");
 
-async function fetchSteam(path, apiKey, steamId, steamIdParameter = "steamid") {
+async function fetchSteam(path, apiKey, steamId, { steamIdParameter = "steamid", query = {} } = {}) {
   const url = new URL(`https://api.steampowered.com/${path}`);
   url.searchParams.set("key", apiKey);
   url.searchParams.set(steamIdParameter, steamId);
+  Object.entries(query).forEach(([name, value]) => url.searchParams.set(name, String(value)));
   const response = await fetch(url, { signal: AbortSignal.timeout(8000) });
   if (!response.ok) throw new Error(`Steam API returned HTTP ${response.status}.`);
   return response.json();
+}
+
+function getGameIconUrl(game) {
+  const appId = Number(game.appid);
+  const iconHash = game.img_icon_url;
+  if (!Number.isSafeInteger(appId) || appId <= 0 || typeof iconHash !== "string" || !/^[a-f0-9]+$/i.test(iconHash)) {
+    return null;
+  }
+  return `https://media.steampowered.com/steamcommunity/public/images/apps/${appId}/${iconHash}.jpg`;
 }
 
 module.exports = async function handler(req, res) {
@@ -21,9 +31,9 @@ module.exports = async function handler(req, res) {
 
   try {
     const [players, badges, games, recent] = await Promise.all([
-      fetchSteam("ISteamUser/GetPlayerSummaries/v2/", apiKey, steamId, "steamids"),
+      fetchSteam("ISteamUser/GetPlayerSummaries/v2/", apiKey, steamId, { steamIdParameter: "steamids" }),
       fetchSteam("IPlayerService/GetBadges/v1/", apiKey, steamId),
-      fetchSteam("IPlayerService/GetOwnedGames/v1/", apiKey, steamId),
+      fetchSteam("IPlayerService/GetOwnedGames/v1/", apiKey, steamId, { query: { include_appinfo: 1 } }),
       fetchSteam("IPlayerService/GetRecentlyPlayedGames/v1/", apiKey, steamId)
     ]);
 
@@ -55,6 +65,7 @@ module.exports = async function handler(req, res) {
         mostPlayed: mostPlayed.map((game) => ({
           appId: Number(game.appid),
           name: typeof game.name === "string" ? game.name : `App ${game.appid}`,
+          iconUrl: getGameIconUrl(game),
           hours: Math.round((Number(game.playtime_forever) || 0) / 60)
         })),
         recentlyPlayed: Array.isArray(recentGames)
