@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#070a12">
+  <title>Painel privado — Yuma</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="admin.css">
+  <script src="admin.js" defer></script>
+</head>
+<body class="admin-page">
+  <div class="ambient ambient-one" aria-hidden="true"></div>
+  <div class="ambient ambient-two" aria-hidden="true"></div>
+  <main class="admin-shell">
+    <header class="admin-header">
+      <a class="brand" href="/" aria-label="Voltar ao site"><span class="brand-mark">Y<span>.</span></span><span class="brand-name">YUMA<span>/</span>ADMIN</span></a>
+      <span class="admin-private"><i></i> ÁREA PRIVADA</span>
+    </header>
+
+    <section class="admin-login glass-card" id="login-panel">
+      <span class="eyebrow"><span class="eyebrow-line"></span> AUTENTICAÇÃO</span>
+      <h1>Painel <span class="gradient-text">Yuma</span></h1>
+      <p>Entre para editar os dados públicos do seu hub.</p>
+      <form id="login-form">
+        <label for="admin-password">Senha de administrador</label>
+        <input id="admin-password" name="password" type="password" autocomplete="current-password" required>
+        <button class="button button-primary" type="submit">Entrar <span>↗</span></button>
+      </form>
+      <p class="admin-message" id="login-message" role="status" aria-live="polite"></p>
+      <small>A senha é validada no servidor; nenhuma chave de API é exibida nesta página.</small>
+    </section>
+
+    <section class="admin-editor glass-card" id="editor-panel" hidden>
+      <div class="admin-title-row">
+        <div><span class="eyebrow"><span class="eyebrow-line"></span> CONFIGURAÇÃO DO HUB</span><h1>Editar <span class="gradient-text">perfil</span></h1></div>
+        <button class="button button-quiet" id="logout-button" type="button">Sair</button>
+      </div>
+      <p class="admin-description">Os dados abaixo são públicos. Ao salvar, o backend grava a configuração no GitHub e o deploy conectado à Vercel publica a atualização.</p>
+
+      <form id="settings-form">
+        <div class="admin-form-grid">
+          <label>Nome público<input name="name" maxlength="50" required></label>
+          <label>Identificador<input name="handle" maxlength="60"></label>
+        </div>
+        <label>Bio<textarea name="bio" rows="3" maxlength="300"></textarea></label>
+        <label>Perfis públicos <span class="field-hint">Uma linha por perfil: id|nome|identificador|URL HTTPS. IDs aceitos: tiktok, twitch, x, github, steam, xbox, spotify, instagram, youtube, discord.</span>
+          <textarea name="socials" rows="8" spellcheck="false"></textarea>
+        </label>
+        <div class="admin-form-grid">
+          <label>SteamID64<input name="steamId" inputmode="numeric" maxlength="17"></label>
+          <label>URL Steam<input name="steamUrl" type="url"></label>
+          <label>Gamertag Xbox<input name="xboxGamertag" maxlength="40"></label>
+          <label>URL Xbox<input name="xboxUrl" type="url"></label>
+          <label>ID da faixa Spotify<input name="trackId" maxlength="22"></label>
+          <label>URL da faixa<input name="trackUrl" type="url"></label>
+        </div>
+        <label>Álbum Spotify<input name="albumUrl" type="url"></label>
+        <label>Convite do Discord<input name="discordInvite" type="url" placeholder="https://discord.gg/..."></label>
+        <label>Projetos públicos <span class="field-hint">JSON: uma lista de objetos com name, description e url. Use [] quando não houver projetos.</span>
+          <textarea name="projects" rows="4" spellcheck="false"></textarea>
+        </label>
+        <div class="admin-actions">
+          <button class="button button-primary" type="submit" id="save-button">Salvar e publicar <span>↗</span></button>
+          <p class="admin-message" id="save-message" role="status" aria-live="polite"></p>
+        </div>
+      </form>
+
+      <div class="integration-status">
+        <h2>Integrações e segredos</h2>
+        <p><b>Steam:</b> a chave fica em <code>STEAM_API_KEY</code> nas variáveis privadas da Vercel.</p>
+        <p><b>GitHub:</b> o token de escrita fica em <code>GITHUB_TOKEN</code>; nunca o cole neste painel.</p>
+        <p><b>Xbox:</b> estatísticas automáticas ficam desativadas até a autenticação oficial Microsoft ser configurada.</p>
+        <button class="button button-quiet" id="check-steam-button" type="button">Verificar API Steam</button>
+        <p class="admin-message" id="steam-message" role="status" aria-live="polite"></p>
+      </div>
+    </section>
+    <a class="admin-back" href="/">← Voltar ao site</a>
+  </main>
+</body>
+</html>
