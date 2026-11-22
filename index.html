@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#070a12">
+  <meta name="description" content="O universo digital de Yuma — games, projetos, música e comunidade.">
+  <title>Yuma — Digital Universe</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <div class="ambient ambient-one" aria-hidden="true"></div>
+  <div class="ambient ambient-two" aria-hidden="true"></div>
+  <canvas id="particles" aria-hidden="true"></canvas>
+
+  <header class="topbar">
+    <a class="brand" href="#home" aria-label="Voltar ao início"><span class="brand-mark">Y<span>.</span></span><span class="brand-name"><span data-profile-brand>YUMA</span><span>/</span>ONLINE</span></a>
+    <button class="menu-toggle" aria-label="Abrir menu" aria-expanded="false"><span></span><span></span></button>
+    <nav class="main-nav" aria-label="Navegação principal">
+      <a class="active" href="#home">Início</a>
+      <a href="#gaming">Gaming</a>
+      <a href="#community">Comunidade</a>
+      <a href="#projects">Projetos</a>
+      <a href="#music">Música</a>
+    </nav>
+    <a class="nav-cta" href="#socials"><span class="online-dot"></span> Conecte-se <span class="arrow">↗</span></a>
+  </header>
+
+  <main>
+    <section class="hero section-wrap" id="home">
+      <div class="hero-copy reveal">
+        <div class="eyebrow"><span class="eyebrow-line"></span> PLAYER, CRIADOR & EXPLORADOR DIGITAL</div>
+        <h1>Meu mundo.<br>Minhas <span class="gradient-text">conexões.</span></h1>
+        <p class="hero-description" data-profile-bio>18 anos · 175 cm · ENTJ-T.<br>Eva Unit-01 — Become a god. Vermelho carmim.</p>
+        <div class="hero-actions">
+          <a class="button button-primary" href="#socials">Explore minhas redes <span>↘</span></a>
+          <a class="button button-quiet" href="#projects"><span class="play-icon">▶</span> O que estou criando</a>
+        </div>
+        <div class="hero-status"><span class="status-neutral"></span><span>Perfis públicos conectados</span><span class="status-divider">/</span><span class="muted" data-steam-presence>presença Steam não sincronizada</span></div>
+      </div>
+
+      <div class="hero-visual reveal">
+        <div class="visual-grid" aria-hidden="true"></div>
+        <div class="orbit orbit-one"></div><div class="orbit orbit-two"></div>
+        <div class="profile-card glass-card">
+          <div class="profile-topline"><span>PLAYER PROFILE</span><span class="card-kicker">YUMA / 01</span></div>
+          <div class="avatar-wrap">
+            <div class="avatar-halo"></div>
+            <div class="avatar" role="img" aria-label="Avatar ilustrado de Yuma"><span>Y</span><i class="avatar-spark spark-one"></i><i class="avatar-spark spark-two"></i></div>
+            <span class="level-badge">ID <b>Y01</b></span>
+          </div>
+          <h2><span data-profile-name>Yuma</span><span class="verified">✦</span></h2>
+          <p class="profile-handle" data-profile-handle>@yumazakki0</p>
+          <div class="profile-divider"></div>
+          <div class="profile-meta"><span><i class="meta-icon">◈</i> 18 anos · 175 cm</span><span><i class="meta-icon">⌘</i> ENTJ-T</span></div>
+          <div class="profile-tags"><span>Gamer</span><span>Eva Unit-01</span><span>Vermelho carmim</span></div>
+          <div class="profile-footer"><span>STATUS</span><span class="status-text"><i></i> Sempre em uma nova missão</span></div>
+        </div>
+        <div class="floating-chip chip-xp"><span class="chip-icon">✳</span><div><b>07 links</b><small>no hub</small></div></div>
+        <div class="floating-chip chip-game"><span class="game-cover">S+X</span><div><small>PERFIS GAMER</small><b>Steam · Xbox</b></div><span class="equalizer"><i></i><i></i><i></i><i></i></span></div>
+        <span class="visual-coordinate">01 / 08 — PROFILE</span>
+      </div>
+      <a class="scroll-cue" href="#stats"><span></span> ROLE PARA EXPLORAR</a>
+    </section>
+
+    <section class="stats-strip section-wrap reveal" id="stats" aria-label="Estatísticas">
+      <div class="stats-intro"><span class="eyebrow">01 — CONEXÕES ATIVAS</span><p>Perfis públicos reunidos.<br>Dados extras quando você quiser.</p></div>
+      <div class="stat"><strong data-social-count>07</strong><small>LINKS NO HUB</small></div>
+      <div class="stat"><strong>02</strong><small>PERFIS GAMER</small></div>
+      <div class="stat"><strong>02</strong><small>LINKS SPOTIFY</small></div>
+      <div class="stat"><strong>—</strong><small>DISCORD NÃO VINCULADO</small></div>
+      <div class="stat"><strong>00</strong><small>PROJETOS PUBLICADOS</small></div>
+    </section>
+
+    <section class="section-wrap content-section" id="gaming">
+      <div class="section-heading reveal">
+        <div><span class="eyebrow"><span class="eyebrow-line"></span> 02 — MEU LOBBY</span><h2>Gaming <span class="gradient-text">hub</span></h2></div>
+        <a class="text-link" href="#socials">Todos os perfis <span>↗</span></a>
+      </div>
+      <div class="gaming-grid">
+        <article class="platform-card steam-card glass-card reveal">
+          <div class="platform-head"><div class="platform-symbol steam-symbol">S</div><div><span class="card-kicker">PLATAFORMA</span><h3>Steam</h3></div><a class="external-link" data-platform-link="steam" href="https://steamcommunity.com/id/yumazakki0" target="_blank" rel="noreferrer" aria-label="Ver perfil Steam">↗</a></div>
+          <p class="platform-handle">steamcommunity.com/id/<b data-steam-handle>yumazakki0</b></p>
+          <div class="platform-metrics"><div><strong data-steam-level>6</strong><small>NÍVEL DO PERFIL</small></div><div><strong data-steam-hours>—</strong><small>HORAS JOGADAS</small></div></div>
+          <div class="favorite-games"><span class="card-kicker">MAIS JOGADOS</span><div class="game-list" data-steam-games></div><div class="game-names" data-steam-game-names>Estatísticas automáticas pendentes.</div></div>
+          <div class="platform-notice" data-steam-message>Configure a chave Steam privada na Vercel para carregar estatísticas.</div>
+          <a class="card-action" data-platform-link="steam" href="https://steamcommunity.com/id/yumazakki0" target="_blank" rel="noreferrer">Abrir perfil Steam <span>↗</span></a>
+        </article>
+        <article class="platform-card xbox-card glass-card reveal">
+          <div class="platform-head"><div class="platform-symbol xbox-symbol">X</div><div><span class="card-kicker">PLATAFORMA</span><h3>Xbox</h3></div><a class="external-link" data-platform-link="xbox" href="https://play.xbox.com/user/Yumazakki0" target="_blank" rel="noreferrer" aria-label="Ver perfil Xbox">↗</a></div>
+          <p class="platform-handle">Xbox Gamertag · <b data-xbox-gamertag>Yumazakki0</b></p>
+          <div class="gamerscore-block"><div class="score-ring"><span>↗</span></div><div><strong>Perfil conectado</strong><small>GAMERSCORE NÃO INFORMADO</small></div></div>
+          <div class="platform-notice">Estatísticas e conquistas ainda não conectadas.</div>
+          <a class="card-action" data-platform-link="xbox" href="https://play.xbox.com/user/Yumazakki0" target="_blank" rel="noreferrer">Abrir perfil Xbox <span>↗</span></a>
+        </article>
+      </div>
+      <div class="now-playing glass-card reveal"><div class="now-label">PRESENÇA DE JOGO</div><div class="now-game-icon">Y</div><div class="now-game-title"><small>PERFIS VINCULADOS</small><b>Steam · Xbox</b></div><div class="playtime"><span>↗</span><small>Presença ao vivo não configurada</small></div></div>
+    </section>
+
+    <section class="section-wrap content-section community-section" id="community">
+      <div class="community-banner glass-card reveal">
+        <div class="community-art" aria-hidden="true"><div class="disc disc-a"></div><div class="disc disc-b"></div><span class="community-star">✳</span><div class="signal signal-a"></div><div class="signal signal-b"></div></div>
+        <div class="community-copy"><span class="eyebrow"><span class="eyebrow-line"></span> 03 — PONTO DE ENCONTRO</span><h2>O lobby vai<br><span class="gradient-text">abrir.</span></h2><p data-discord-description>O convite do Discord ainda não foi conectado. Quando você enviar o link público do servidor, o botão de entrada ficará disponível aqui.</p><div class="community-channels"><span data-discord-channel>CONVITE PENDENTE</span><span>SEM DADOS DE MEMBROS</span></div><a class="button button-primary" data-discord-cta href="#socials">Ver perfis conectados <span>↘</span></a></div>
+        <div class="community-side"><div class="community-pending-icon">◉</div><b>Discord <span data-discord-status>não vinculado</span></b><small data-discord-hint>AGUARDANDO LINK DE CONVITE</small><div class="community-online">Servidor não configurado</div></div>
+      </div>
+    </section>
+
+    <section class="section-wrap content-section" id="projects">
+      <div class="section-heading reveal">
+        <div><span class="eyebrow"><span class="eyebrow-line"></span> 04 — PROJETOS</span><h2>Próximas <span class="gradient-text">missões.</span></h2></div>
+        <span class="section-note">NENHUM PROJETO PUBLICADO AINDA</span>
+      </div>
+      <div class="projects-grid" data-projects>
+        <article class="project-card project-empty glass-card reveal"><div class="project-visual visual-code" aria-hidden="true"><div class="code-lines"><span><i>01</i> const projects = [];</span><span><i>02</i> // sua próxima ideia</span><span><i>03</i> // aparece aqui</span></div><div class="code-glow"></div></div><div class="project-info"><div><span class="card-kicker">PRÓXIMO CHECKPOINT</span><h3>Nenhum projeto por enquanto</h3><p>Quando você tiver algo publicado, adicionamos o link e a descrição aqui.</p></div></div></article>
+      </div>
+    </section>
+
+    <section class="section-wrap content-section music-section" id="music">
+      <div class="section-heading reveal"><div><span class="eyebrow"><span class="eyebrow-line"></span> 05 — TRILHA SONORA</span><h2>On repeat<span class="gradient-text">.</span></h2></div><span class="section-note">O SOM QUE ACOMPANHA AS MISSÕES</span></div>
+      <div class="music-grid">
+        <article class="spotify-card glass-card reveal"><div class="spotify-top"><span class="spotify-brand"><span>◉</span> SPOTIFY</span><span class="live-pill"><i></i> FAIXA DO YUMA</span></div><iframe class="spotify-embed" data-spotify-player src="https://open.spotify.com/embed/track/7mDTvYD2ieE4Q28XFziMfJ?utm_source=generator" title="Player do Spotify com a faixa escolhida por Yuma" loading="lazy" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe><a class="spotify-link" data-spotify-track-link href="https://open.spotify.com/intl-pt/track/7mDTvYD2ieE4Q28XFziMfJ" target="_blank" rel="noreferrer">Abrir esta faixa no Spotify <span>↗</span></a></article>
+        <div class="playlist-column"><div class="playlist-heading"><div><span class="card-kicker">SELEÇÃO PESSOAL</span><h3>Álbum conectado</h3></div><span class="playlist-count">SPOTIFY</span></div>
+          <a class="playlist-row" data-spotify-album-link href="https://open.spotify.com/intl-pt/album/4zUGrNorIxp4l04Wn4poTL" target="_blank" rel="noreferrer"><span class="playlist-cover cover-neon"><i>♫</i></span><span class="playlist-details"><b data-profile-album>Álbum escolhido por Yuma</b><small>Abrir álbum no Spotify</small></span><span class="playlist-arrow">↗</span></a>
+          <div class="music-note"><span>♫</span> Envie links de playlists para adicioná-las também.</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-wrap socials-section" id="socials">
+      <div class="socials-panel glass-card reveal"><div class="socials-copy"><span class="eyebrow"><span class="eyebrow-line"></span> 06 — ME ENCONTRE POR AÍ</span><h2>Mesma pessoa,<br><span class="gradient-text">vários universos.</span></h2><p>Uma rota única para chegar aos meus perfis públicos.</p><span class="short-url">YUMA <i>· HUB CENTRAL</i></span></div>
+        <div class="social-route-label"><span>ROTA LINEAR DE CONEXÕES</span><span data-route-count>01 — 07</span></div>
+        <div class="social-links" data-social-links>
+          <a href="https://www.tiktok.com/@yumazzaki0?lang=pt-BR" target="_blank" rel="noreferrer"><span class="social-icon tiktok">♪</span><span><b>TikTok</b><small>@yumazzaki0</small></span><span class="social-arrow">↗</span></a>
+          <a href="https://www.twitch.tv/yumazakki0" target="_blank" rel="noreferrer"><span class="social-icon twitch">▣</span><span><b>Twitch</b><small>twitch.tv/yumazakki0</small></span><span class="social-arrow">↗</span></a>
+          <a href="https://x.com/yumazkai" target="_blank" rel="noreferrer"><span class="social-icon social-x">X</span><span><b>X</b><small>@yumazkai</small></span><span class="social-arrow">↗</span></a>
+          <a href="https://github.com/yumazakki0" target="_blank" rel="noreferrer"><span class="social-icon github">⌘</span><span><b>GitHub</b><small>github.com/yumazakki0</small></span><span class="social-arrow">↗</span></a>
+          <a href="https://steamcommunity.com/id/yumazakki0" target="_blank" rel="noreferrer"><span class="social-icon steam">◉</span><span><b>Steam</b><small>steamcommunity.com/id/yumazakki0</small></span><span class="social-arrow">↗</span></a>
+          <a href="https://play.xbox.com/user/Yumazakki0" target="_blank" rel="noreferrer"><span class="social-icon xbox">X</span><span><b>Xbox</b><small>Gamertag: Yumazakki0</small></span><span class="social-arrow">↗</span></a>
+          <a href="https://open.spotify.com/intl-pt/track/7mDTvYD2ieE4Q28XFziMfJ" target="_blank" rel="noreferrer"><span class="social-icon spotify-icon">♫</span><span><b>Spotify</b><small>Faixa escolhida por Yuma</small></span><span class="social-arrow">↗</span></a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-wrap final-cta reveal"><span class="cta-orb" aria-hidden="true"></span><span class="eyebrow">FIM DA FASE. COMEÇO DA PRÓXIMA.</span><h2>Nos vemos <span class="gradient-text">online.</span></h2><a href="#home" class="button button-outline">Voltar ao topo <span>↑</span></a><span class="cta-coordinate">MISSION COMPLETE · GG</span></section>
+  </main>
+
+  <footer class="footer section-wrap"><a class="brand" href="#home" aria-label="Yuma"><span class="brand-mark">Y<span>.</span></span></a><span id="site-config-status">Convite do Discord, foto e estatísticas extras ainda podem ser conectados.</span><span>© <span id="year"></span> <span data-profile-footer-name>YUMA</span> <span class="footer-separator">/</span> GG WP</span></footer>
+</body>
+</html>
